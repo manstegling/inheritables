@@ -34,12 +34,13 @@ If you want to use the annotation `@RequireDefaultConstructor` with the associat
   </dependency>
 ```
 
-To get the annotation processing to run as part of your compilation you will then need to add the following plugin:
+To get the annotation processing to run as part of your compilation you will then need to add the processor to the `maven-compiler-plugin`:
 
 ```xml
   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-compiler-plugin</artifactId>
-    <version>3.3</version>
+    <version>3.8.0</version>
     <configuration>
       <source>1.8</source>
       <target>1.8</target>
@@ -52,6 +53,22 @@ To get the annotation processing to run as part of your compilation you will the
 ```
 
 Voilà, simply annotate your **Message** super-interface with `@RequireDefaultConstructor` and all your message types will automatically be checked at compile-time -- saving you from embarrassing run-time exceptions!
+
+#### Extra config needed when building incrementally [Eclipse]
+
+To enjoy the functionality of annotation processing at compile-time when using Eclipse the following configuration is required:
+
+1. Right-click on your project in 'Package Explorer'
+2. Select 'Properties'
+3. Navigate to Java Compiler -> Annotation Processing
+4. Check 'Enable project specific settings'
+5. Navigate to Java Compiler -> Annotation Processing -> Factory Path
+6. Check 'Enable project specific settings'
+7. Use 'Add Variable...' to add the following two variables:
+
+ * M2_REPO/se/motility/inheritables/inheritables-annotation/1.0.0/inheritables-annotation-1.0.0.jar
+ * M2_REPO/se/motility/inheritables/inheritables-processor/1.0.0/inheritables-processor-1.0.0.jar
+
 
 ## Creating your own inheritable annotations
 
@@ -71,8 +88,9 @@ Example of build configuration to do this:
   <build>
     <plugins>
       <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.3</version>
+        <version>3.8.0</version>
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
@@ -116,7 +134,7 @@ To enable processing with your newly created annotation processor in your projec
 
 ## Comments
 
-At this time only annotations <i>without attributes</i> ("markers") have been considered. Therefore, this API does not give the possibility to retrieve attributes of a detected annotation. For more on multiple inheritance and associated problems, see [The Diamond Problem](https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem).
+At this time only annotations _without attributes_ ("markers") have been considered. Therefore, this API does not give the possibility to retrieve attributes of a detected annotation. For more on multiple inheritance and associated problems, see [The Diamond Problem](https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem).
 
  ----
  
