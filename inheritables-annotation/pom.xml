@@ -3,7 +3,7 @@
   <parent>
     <groupId>se.motility.inheritables</groupId>
     <artifactId>inheritables</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
   </parent>
   <artifactId>inheritables-annotation</artifactId>
   <packaging>jar</packaging>
