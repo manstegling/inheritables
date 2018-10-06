@@ -1,6 +1,8 @@
 # inheritables
 
+Now available on Maven Central!
 
+See artifact details in [Using the @RequireDefaultConstructor annotation](#using-the-requiredefaultconstructor-annotation).
 
 ## Why inheritables is a definite must-have
 
@@ -18,12 +20,12 @@ I figured this notion of _extended inheritance_ could be useful for other purpos
 
 ## Using the @RequireDefaultConstructor annotation
 
-If you want to use the annotation `@RequireDefaultConstructor` with the associated annotation processor `DefaultConstructorProcessor`, you will need the following two dependencies:
+If you want to use the annotation `@RequireDefaultConstructor` with the associated annotation processor `DefaultConstructorProcessor`, you will need the following two dependencies (available from Maven Central):
 
 ```xml
   <dependency>
       <groupId>se.motility.inheritables</groupId>
-      <artifactId>inheritables-annotations</artifactId>
+      <artifactId>inheritables-annotation</artifactId>
       <version>1.0.0</version>
   </dependency>
   <dependency>
@@ -54,9 +56,9 @@ To get the annotation processing to run as part of your compilation you will the
 
 Voilà, simply annotate your **Message** super-interface with `@RequireDefaultConstructor` and all your message types will automatically be checked at compile-time -- saving you from embarrassing run-time exceptions!
 
-#### Extra config needed when building incrementally [Eclipse]
+#### Extra config needed when using Eclipse IDE
 
-To enjoy the functionality of annotation processing at compile-time when using Eclipse the following configuration is required:
+To enjoy the functionality of annotation processing at compile-time when using Eclipse, either install the `m2e-apt` plug-in to discover the annotation processor automatically, or perform the following steps to add it manually:
 
 1. Right-click on your project in 'Package Explorer'
 2. Select 'Properties'
